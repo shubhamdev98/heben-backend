@@ -7,6 +7,7 @@ router.get('/quotations', quotationController.getAllQuotations);
 router.get('/quotations/:id', quotationController.getQuotationById);
 router.put('/quotations/:id', quotationController.updateQuotation);
 router.delete('/quotations/:id', quotationController.deleteQuotation);
+router.get('/quotations/:id/pdf', quotationController.downloadQuotationPDF);
 
 module.exports = router;
   

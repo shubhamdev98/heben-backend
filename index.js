@@ -2,11 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./src/models');
 const cors = require('cors')
+const path = require('path')
 
 const app = express();
 
 app.use(cors())
 app.use(bodyParser.json());
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 
 // Sync DB
 db.sequelize.sync({ force: false }).then(() => {

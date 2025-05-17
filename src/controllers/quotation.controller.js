@@ -1,3 +1,4 @@
+const generateQuotationPDF = require('../helper/pdfGen.helper');
 const db = require('../models');
 const Customer = db.Customer;
 const Product = db.Product;
@@ -99,3 +100,26 @@ exports.deleteQuotation = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete quotation' });
   }
 };
+
+
+exports.downloadQuotationPDF = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const customer = await Customer.findByPk(id, {
+      include: [{ model: Product, as: 'products' }]
+    });
+
+    if (!customer || customer.products.length === 0) {
+      return res.status(404).json({ message: 'Quotation not found' });
+    }
+
+    const filePath = await generateQuotationPDF(customer, customer.products[0]);
+
+    res.download(filePath, `quotation_${customer.id}.pdf`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to generate PDF' });
+  }
+};
+
