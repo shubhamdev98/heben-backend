@@ -9,6 +9,8 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'src/views')); // assuming quotation.ejs is here
 
 
 // Sync DB

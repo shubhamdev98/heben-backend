@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quotation</title>
+    <style>
+      body { font-family: Arial, sans-serif; font-size: 12px; margin: 40px; }
+      h1 { text-align: center; text-decoration: underline; }
+      table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+      th, td { border: 1px solid #000; padding: 8px; text-align: center; }
+      .no-border { border: none !important; }
+      .section-title { margin-top: 30px; font-weight: bold; text-decoration: underline; }
+      .notes, .subtext { font-size: 11px; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Quotation of Elevator</h1>
+
+      <p><strong>Buyer:</strong> <%= customer.firstName %></p>
+      <p><strong>Project Name:</strong> <%= customer.siteName %></p>
+      <p><strong>Date:</strong> <%= new Date().toLocaleDateString() %></p>
+
+      <div class="section-title">1. Product & Price</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Floors</th>
+            <th>Speed (m/s)</th>
+            <th>Load (kg)</th>
+            <th>Quantity</th>
+            <th>Price (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= product.liftType %></td>
+            <td><%= product.floor %></td>
+            <td>0.4</td>
+            <td>320</td>
+            <td>1</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Total Amount:</strong> 1</p>
+      <p><strong>Container No.:</strong> 1*20GP</p>
+
+      <div class="notes">
+        <p><strong>Note:</strong> The quotation bases on equipment price terms, excluding installation and training charge.</p>
+        <ul>
+          <li>$1200/unit</li>
+          <li>$180/person/day</li>
+          <li>Flight, hotel, board fee, visa (actual)</li>
+        </ul>
+      </div>
+
+      <div class="section-title">2. Packing</div>
+      <p class="subtext">Export packing gluing wooden box</p>
+
+      <div class="section-title">3. Payment Terms</div>
+      <p class="subtext">30% T/T in advance & 70% T/T before shipment</p>
+
+      <div class="section-title">4. Delivery Time</div>
+      <p class="subtext">45 days from T/T receipt and drawing confirmation</p>
+
+      <div class="section-title">5. Warranty</div>
+      <p class="subtext">12 months after delivery (Excl. natural disaster, war, manual damage)</p>
+
+      <div class="section-title">6. Valid Period</div>
+      <p class="subtext">60 days</p>
+
+      <div class="section-title">7. Documents with Shipment</div>
+      <p class="subtext">Installation guide, electrical plan, packing list, manual (English)</p>
+    </div>
+  </body>
+</html>
