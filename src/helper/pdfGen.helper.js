@@ -3,11 +3,18 @@ const pdf = require('html-pdf');
 const path = require('path');
 const fs = require('fs');
 
-const generateQuotation = async (customer, product) => {
+const generateQuotation = async (customer, product, extrafield) => {
   return new Promise((resolve, reject) => {
     const templatePath = path.join(__dirname, '../views/quotation.ejs');
 
-    ejs.renderFile(templatePath, { customer, product }, (err, html) => {
+    ejs.renderFile(templatePath, { 
+      customer, 
+      product, 
+      basementArr: product.basementArr || [],
+      ground_floorArr: product.ground_floorArr || [],
+      floorArr: product.floorArr || [],
+      extrafield: extrafield || {}
+    }, (err, html) => {
       if (err) { 
         return reject(err);
       }
